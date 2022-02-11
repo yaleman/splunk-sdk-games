@@ -7,3 +7,4 @@ config.py
 dist/
 .env
 build/
+outputfile.*

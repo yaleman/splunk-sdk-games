@@ -1,4 +1,4 @@
-""" test working with splunk """
+""" test working with splunk - writes an XML file to disk s"""
 import io
 # import json
 # import time
