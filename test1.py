@@ -35,6 +35,7 @@ for result in reader:
         print(f"Message: {result}")
     print(f"is_preview = {reader.is_preview}")
 
+final_time = time.time()
 print(f"Start time:\t{start_time}")
-print(f"Job Done:\t{job_done}")
-print(f"All Done:\t{time.time()}")
+print(f"Job Done:\t{job_done} ({job_done-start_time})")
+print(f"All Done:\t{final_time} ({final_time-start_time})")
