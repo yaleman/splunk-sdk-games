@@ -1,0 +1,17 @@
+[[package]]
+name = "splunk-sdk"
+version = "1.6.18"
+description = "The Splunk Software Development Kit for Python."
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.9"
+content-hash = "9acb05e9d8b1815383fc7134fad65d5a839e923515abda8d5b121ab4d5b22146"
+
+[metadata.files]
+splunk-sdk = [
+    {file = "splunk-sdk-1.6.18.tar.gz", hash = "sha256:edc0959786f5dcab225ba98633c310dbf7584977849f6c2152a0e5090b5e2561"},
+]
