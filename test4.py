@@ -13,7 +13,7 @@ service = client.connect(
 )
 
 job = service.jobs.export(
-    'search index=_internal host="*" TERM(INFO) earliest=-10m',
+    'search index=_internal host="*" TERM(INFO) earliest=-10m | table *',
     adhoc_search_level='verbose',
     count=0,
     output_mode="json",
@@ -24,4 +24,5 @@ results = 0
 for line in io.BufferedReader(job).readlines():
     results += 1
     el = json.loads(line)
+print(json.dumps(el, indent=4))
 print(f"Total results: {results}")
