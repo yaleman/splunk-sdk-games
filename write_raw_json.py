@@ -4,8 +4,6 @@
 - runs as fast as it can, reading from the stream and writing it to disk as XML
 
 """
-import json
-from splunklib.results import Message, ResultsReader  # type: ignore
 
 import config
 from utils import BaseTestHandler
@@ -16,15 +14,14 @@ testhandler = BaseTestHandler(
     job_config={
         "adhoc_search_level": "verbose",
         "count": 0,
+        "output_mode": "json",
     },
 )
 
+job = testhandler.run()
 
-RESULT_COUNT = 0
-LASTRESULT = None
-for result in ResultsReader(testhandler.run()):
-    RESULT_COUNT += 1
-    if isinstance(result, Message):
-        print(json.dumps(result, indent=4, default=str))
-    LASTRESULT = result
-print(f"Results: {RESULT_COUNT}")
+data = job.read(10240)
+with open("outputfile.json", "wb") as file_handle:
+    while data:
+        file_handle.write(data)
+        data = job.read(10240)

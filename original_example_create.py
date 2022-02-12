@@ -32,8 +32,8 @@ for result in reader:
     if isinstance(result, dict):
         print(f"Result: {result}")
     elif isinstance(result, results.Message):
-        print(f"Message: {result}")
-    print(f"is_preview = {reader.is_preview}")
+        print(f"Message: {json.dumps(result, indent=4, default=str)}")
+    print(f"{reader.is_preview=}")
 
 final_time = time.time()
 print(f"Start time:\t{start_time}")

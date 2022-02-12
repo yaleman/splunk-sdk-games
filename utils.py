@@ -2,7 +2,7 @@
 
 from splunklib import client  # type: ignore
 
-TEST_SEARCH = "search index=_internal TERM(INFO) earliest=-10m | table *"
+TEST_SEARCH = "search index=_internal TERM(INFO) earliest=1644633000 latest=1644633600 | table *"
 
 # pylint: disable=too-few-public-methods
 class BaseTestHandler:
