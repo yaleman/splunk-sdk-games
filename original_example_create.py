@@ -1,36 +1,36 @@
-""" test working with splunk """
+""" this is straight from the splunk SDK
+
+- uses service.jobs.create, which makes the search head write the results to disk, THEN return them
+- uses results.ResultsReader
+    - uses all your CPU
+
+"""
 import time
 import json
 
-import splunklib.client as client
-from splunklib import results
+from splunklib import results  # type: ignore
 
 import config
+from utils import BaseTestHandler
 
-service = client.connect(
-    host=config.host,
-    username=config.username,
-    password=config.password,
-    autoLogin=True,
+testhandler = BaseTestHandler(
+    config,
+    job_runner="create",
 )
 
-job = service.jobs.create(
-    'search index=_internal host="*" TERM(INFO) earliest=-1h',
-    adhoc_search_level='verbose',
-    )
+job = testhandler.run()
 time.sleep(1)
 start_time = time.time()
 while not job.is_done():
     time.sleep(1)
     print("Still waiting...")
-# print(dir(job)
 job_done = time.time()
 
 print(json.dumps(job.state, indent=4))
 reader = results.ResultsReader(job.events())
 for result in reader:
     if isinstance(result, dict):
-        print (f"Result: {result}")
+        print(f"Result: {result}")
     elif isinstance(result, results.Message):
         print(f"Message: {result}")
     print(f"is_preview = {reader.is_preview}")

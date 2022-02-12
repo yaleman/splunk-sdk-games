@@ -8,9 +8,13 @@ authors = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
-splunk-sdk = "^1.6.18"
+splunk-sdk = {path = "splunk-sdk-python"}
 
 [tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+pylint = "^2.12.2"
+black = "^22.1.0"
+mypy = "^0.931"
 
 [build-system]
 requires = [

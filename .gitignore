@@ -8,3 +8,4 @@ dist/
 .env
 build/
 outputfile.*
+splunk-sdk-python
