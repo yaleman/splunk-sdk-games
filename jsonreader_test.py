@@ -22,16 +22,16 @@ RESULT_COUNT = 0
 LASTRESULT = None
 for result in JSONResultsReader(testhandler.run()):
     RESULT_COUNT += 1
-    if "preview" not in result or result["preview"] is False:
+    # if "preview" not in result or result["preview"] is False:
         # print(".", end=".")
-        pass
-    else:
-        print("p")
-    # if results % 100 == 0:
-    # print("\n")
+        # pass
+    # else:
+        # print("p")
+        # got a preview message
+        # pass
     if isinstance(result, Message):
         print(json.dumps(result, indent=4))
+
     LASTRESULT = result
-    # sys.stdout.flush()
-print(json.dumps(LASTRESULT, indent=4))
+# print(json.dumps(LASTRESULT, indent=4))
 print(f"Total results: {RESULT_COUNT}")
