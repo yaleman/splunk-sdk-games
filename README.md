@@ -10,6 +10,8 @@ Once you've cloned this repository, grab a copy of my fork of the SDK:
 
 ```shell
 git clone https://github.com/yaleman/splunk-sdk-python/
+git -C splunk-sdk-python checkout jsonreader
+git -C splunk-sdk-python pull 
 ```
 
 Then install things:
