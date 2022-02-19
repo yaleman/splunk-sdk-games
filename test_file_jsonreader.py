@@ -23,7 +23,7 @@ results = JSONResultsReader(inputdata)
 for result in results:
     if isinstance(result, Message):
         print("message: ",json.dumps(result, indent=4, default=str))
-    if result.get("preview"):
+    if results.is_preview:
         PREVIEW_COUNT += 1
     else:
         RESULT_COUNT += 1
