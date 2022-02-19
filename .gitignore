@@ -7,5 +7,5 @@ config.py
 dist/
 .env
 build/
-outputfile.*
 splunk-sdk-python
+outputfile*.*

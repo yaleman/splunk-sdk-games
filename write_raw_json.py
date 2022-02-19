@@ -1,7 +1,6 @@
-""" this is straight from the splunk SDK
-
+""" write out the raw JSON output data to disk
 - uses service.jobs.export, for speed
-- runs as fast as it can, reading from the stream and writing it to disk as XML
+- runs as fast as it can, reading from the stream and writing it to disk
 
 """
 

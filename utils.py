@@ -36,5 +36,18 @@ class BaseTestHandler:
         """runs the job, set self.job_runner to 'export' or 'create' depending on
         which job handler you want to use
         """
-        runner = getattr(self.service.jobs, self.job_runner)
-        return runner(self.test_search, **self.job_config)
+        if self.job_runner == "export":
+            return self.service.jobs.export(self.test_search, **self.job_config)
+        elif self.job_runner == "oneshot":
+            return self.service.jobs.oneshot(self.test_search, **self.job_config)
+        elif self.job_runner == "create":
+            return self.service.jobs.create(self.test_search, **self.job_config)
+        else:
+            raise ValueError(f"unsupported job_runner type: {self.job_runner}")
+
+def validate_search(service: client.Service, searchstring: str) -> bool:
+    try:
+        service.parse(searchstring, parse_only=True)
+        return True
+    except client.HTTPError as e:
+        raise ValueError("query '%s' is invalid:\n\t%s" % (TEST_SEARCH, str(e)), 2)
