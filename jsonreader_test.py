@@ -25,6 +25,6 @@ LASTRESULT = None
 for result in JSONResultsReader(testhandler.run()):
     RESULT_COUNT += 1
     if isinstance(result, Message):
-        print("message: ",json.dumps(result, indent=4, default=str))
+        print("message: ", json.dumps(result, indent=4, default=str))
     LASTRESULT = result
 print(f"Results: {RESULT_COUNT}")

@@ -2,7 +2,9 @@
 
 from splunklib import client  # type: ignore
 
-TEST_SEARCH = "search index=_internal TERM(INFO) earliest=1644633000 latest=1644633600 | table *"
+TEST_SEARCH = (
+    "search index=_internal TERM(INFO) earliest=1644633000 latest=1644633600 | table *"
+)
 
 # pylint: disable=too-few-public-methods
 class BaseTestHandler:
@@ -38,16 +40,19 @@ class BaseTestHandler:
         """
         if self.job_runner == "export":
             return self.service.jobs.export(self.test_search, **self.job_config)
-        elif self.job_runner == "oneshot":
+        if self.job_runner == "oneshot":
             return self.service.jobs.oneshot(self.test_search, **self.job_config)
-        elif self.job_runner == "create":
+        if self.job_runner == "create":
             return self.service.jobs.create(self.test_search, **self.job_config)
-        else:
-            raise ValueError(f"unsupported job_runner type: {self.job_runner}")
+        raise ValueError(f"unsupported job_runner type: {self.job_runner}")
+
 
 def validate_search(service: client.Service, searchstring: str) -> bool:
+    """ validates your search """
     try:
         service.parse(searchstring, parse_only=True)
         return True
-    except client.HTTPError as e:
-        raise ValueError("query '%s' is invalid:\n\t%s" % (TEST_SEARCH, str(e)), 2)
+    except client.HTTPError as error_message:
+        raise ValueError(
+            f"query '{TEST_SEARCH}' is invalid:{error_message}"
+        )  # pylint: disable=raise-missing-from
