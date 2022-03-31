@@ -1,9 +1,14 @@
 """ some common things """
 
+from time import time
+
 from splunklib import client  # type: ignore
 
+TEST_SEARCH_TIME_LATEST = round(time(),3)-30 # 30 seconds ago
+TEST_SEARCH_TIME_EARLIEST = TEST_SEARCH_TIME_LATEST - 300
+
 TEST_SEARCH = (
-    "search index=_internal TERM(INFO) earliest=1644633000 latest=1644633600 | table *"
+    f"search index=_internal TERM(INFO) earliest={TEST_SEARCH_TIME_EARLIEST} latest={TEST_SEARCH_TIME_LATEST} | table *"
 )
 
 # pylint: disable=too-few-public-methods
@@ -53,6 +58,7 @@ def validate_search(service: client.Service, searchstring: str) -> bool:
         service.parse(searchstring, parse_only=True)
         return True
     except client.HTTPError as error_message:
+        # pylint: disable=raise-missing-from
         raise ValueError(
             f"query '{TEST_SEARCH}' is invalid:{error_message}"
-        )  # pylint: disable=raise-missing-from
+        )
