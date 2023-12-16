@@ -22,8 +22,8 @@ logging.basicConfig(level=getattr(logging, os.getenv("LOG_LEVEL", "INFO"), "INFO
 logging.debug("Creating search '%s'", TEST_SEARCH)
 
 
-def main():
-    """ main func """
+def main() -> None:
+    """main func"""
     service = client.connect(
         host=config.host,
         username=config.username,
