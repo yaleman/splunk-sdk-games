@@ -2,9 +2,9 @@
 name = "splunk-sdk-games"
 version = "0.1.0"
 description = ""
-authors = [
-    "James Hodgkinson <james@terminaloutcomes.com>",
-]
+authors = ["James Hodgkinson <james@terminaloutcomes.com>"]
+
+packages = [{ include = "*.py" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -18,14 +18,10 @@ black = "^23.12.0"
 mypy = "^1.7"
 
 [build-system]
-requires = [
-    "poetry-core>=1.0.0",
-]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "splunk-sdk-games"
 version = "0.1.0"
-authors = [
-    { name = "James Hodgkinson", email = "james@terminaloutcomes.com" },
-]
+authors = [{ name = "James Hodgkinson", email = "james@terminaloutcomes.com" }]
