@@ -9,7 +9,7 @@ packages = [{ include = "*.py" }]
 [tool.poetry.dependencies]
 python = "^3.9"
 # splunk-sdk = {path = "splunk-sdk-python"}
-splunk-sdk = "^2.0.0"
+splunk-sdk = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^8.1.1"
