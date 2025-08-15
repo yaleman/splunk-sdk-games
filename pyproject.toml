@@ -13,7 +13,7 @@ splunk-sdk = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^8.4.1"
-pylint = "^3.3.7"
+pylint = "^3.3.8"
 black = "^25.1.0"
 mypy = "^1.17"
 
