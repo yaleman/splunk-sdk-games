@@ -11,10 +11,9 @@ config is a python file with the following variables:
 
 from time import time
 
-from splunklib import client  # type: ignore
+from splunklib import client
 
 import config
-
 
 TEST_SEARCH_TIME_LATEST = round(time(),3)-30 # 30 seconds ago
 TEST_SEARCH_TIME_EARLIEST = TEST_SEARCH_TIME_LATEST - 300 # five minutes before that

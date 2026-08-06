@@ -5,7 +5,7 @@ streams events and parses them into python dicts
 """
 import json
 
-from splunklib.results import JSONResultsReader, Message  # type: ignore
+from splunklib.results import JSONResultsReader, Message
 
 import config
 from utils import BaseTestHandler

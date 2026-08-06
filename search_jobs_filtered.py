@@ -2,7 +2,7 @@
 #
 # filter the user's jobs
 
-from splunklib import client  # type: ignore
+from splunklib import client
 
 import config
 

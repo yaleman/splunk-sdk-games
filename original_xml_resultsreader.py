@@ -5,7 +5,8 @@
 
 """
 import json
-from splunklib.results import Message, ResultsReader  # type: ignore
+
+from splunklib.results import Message, ResultsReader
 
 import config
 from utils import BaseTestHandler

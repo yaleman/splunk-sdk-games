@@ -1,9 +1,9 @@
 """ some common things """
 
 from time import time
-from typing import Any, Optional
+from typing import Any
 
-from splunklib import client  # type: ignore
+from splunklib import client
 
 TEST_SEARCH_TIME_LATEST = round(time(), 3) - 30  # 30 seconds ago
 TEST_SEARCH_TIME_EARLIEST = TEST_SEARCH_TIME_LATEST - 300
@@ -20,7 +20,7 @@ class BaseTestHandler:
         config: Any,
         test_search: str = TEST_SEARCH,
         job_runner: str = "export",
-        job_config: Optional[dict[str, Any]] = None,
+        job_config: dict[str, Any] | None = None,
     ):
         """config is an object with host/username/password"""
         self.service = client.connect(

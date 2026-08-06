@@ -1,11 +1,11 @@
 """ testing a proxied connection to splunk """
 
-from io import BytesIO
-
-import urllib.request
 import urllib
-from typing import Any, Dict, List, Optional, Tuple, TypedDict
-from splunklib import client  # type: ignore
+import urllib.request
+from io import BytesIO
+from typing import Any, TypedDict
+
+from splunklib import client
 
 import config
 
@@ -17,7 +17,7 @@ class RequestDict(TypedDict):
     """blep"""
 
     method: str
-    headers: List[Tuple[str, Any]]
+    headers: list[tuple[str, Any]]
     body: str
 
 
@@ -30,9 +30,9 @@ class ProxiedHandler:
         self,
         proxy_host: str,
         proxy_port: int,
-        username: Optional[str] = None,
-        password: Optional[str] = None,
-        realm: Optional[str] = None,
+        username: str | None = None,
+        password: str | None = None,
+        realm: str | None = None,
     ) -> None:
         """setup"""
         self.proxy_host = proxy_host
@@ -41,7 +41,7 @@ class ProxiedHandler:
         self.password = password
         self.realm = realm
 
-    def handler(self, url: str, request_dict: RequestDict) -> Dict[str, Any]:
+    def handler(self, url: str, request_dict: RequestDict) -> dict[str, Any]:
         """handles connections"""
         headers = {
             "User-Agent": "splunk-sdk-python/1.7.2",

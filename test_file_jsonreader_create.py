@@ -6,7 +6,7 @@ streams events and parses them into python dicts
 import io
 from pathlib import Path
 
-from splunklib.results import JSONResultsReader, Message  # type: ignore
+from splunklib.results import JSONResultsReader, Message
 
 MESSAGE_COUNT = 0
 PREVIEW_COUNT = 0

@@ -6,7 +6,7 @@ streams events and parses them into python dicts
 import io
 import os
 
-from splunklib.results import ResultsReader, Message  # type: ignore
+from splunklib.results import Message, ResultsReader
 
 RESULT_COUNT = 0
 PREVIEW_COUNT = 0

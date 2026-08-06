@@ -5,10 +5,10 @@
     - uses all your CPU
 
 """
-import time
 import json
+import time
 
-from splunklib import results  # type: ignore
+from splunklib import results
 
 import config
 from utils import BaseTestHandler

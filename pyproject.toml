@@ -13,9 +13,6 @@ splunk-sdk = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^8.4.2"
-pylint = "^3.3.9"
-black = "^25.11.0"
-mypy = "^1.19"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -25,3 +22,9 @@ build-backend = "poetry.core.masonry.api"
 name = "splunk-sdk-games"
 version = "0.1.0"
 authors = [{ name = "James Hodgkinson", email = "james@terminaloutcomes.com" }]
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.16.1,<0.17.0)",
+    "ty (>=0.0.68,<0.0.69)"
+]
