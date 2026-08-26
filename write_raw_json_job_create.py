@@ -10,7 +10,7 @@ import logging
 import os
 import time
 
-from splunklib import client  # ty:ignore[unresolved-import]
+from splunklib import client
 
 import config
 from utils import TEST_SEARCH
